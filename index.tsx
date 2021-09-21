@@ -1,31 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
-import Hello from './Hello';
-import './style.css';
+import { RecoilRoot } from 'recoil';
+import './index.css';
+import Home from './page/Home';
 
-interface AppProps { }
-interface AppState {
-  name: string;
-}
-
-class App extends Component<AppProps, AppState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: 'React'
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <Hello name={this.state.name} />
-        <p>
-          Start editing to see some magic happen :)
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <RecoilRoot>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <Home />
+    </React.Suspense>
+  </RecoilRoot>
+);
 
 render(<App />, document.getElementById('root'));
