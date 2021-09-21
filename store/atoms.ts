@@ -6,12 +6,7 @@ export const filters = atom({
   default: [],
 });
 
-export const personelInformation = atom({
-  key: 'personelInformation',
-  default: [],
-});
-
 export const rawPersonelData = atom({
   key: 'RawData',
-  default: rawData,
+  default: rawData.results,
 });
