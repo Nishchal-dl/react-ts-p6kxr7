@@ -8,7 +8,7 @@ const Home = () => {
   const information =
     useRecoilValue<Array<PersonelInformation>>(personelInformation);
   const state = useRecoilValue<Array<string>>(availableState);
-  const setFilter = useSetRecoilState(filters);
+  const [filter, setFilter] = useRecoilState(filters);
 
   const onChange = (e: any) => {
     if (e.target.checked) {
@@ -16,7 +16,8 @@ const Home = () => {
     } else {
       setFilter((current) => {
         const previous = [...current];
-        return previous.splice(previous.indexOf(e.target.value), 1);
+        previous.splice(previous.indexOf(e.target.value), 1);
+        return previous;
       });
     }
   };
@@ -45,7 +46,7 @@ const Home = () => {
           </div>
         ))}
       </form>
-      {/* <pre>{JSON.stringify(information[0], null, '  ')}</pre> */}
+      <pre>{JSON.stringify(filter, null, '  ')}</pre>
     </section>
   );
 };
